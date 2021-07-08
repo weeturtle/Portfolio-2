@@ -1,5 +1,11 @@
 /* General Styles */
 
+h1,
+h2,
+h3 {
+    font-family: 'Teko';
+}
+
 a {
     text-decoration: none;
 }
@@ -36,4 +42,34 @@ header .logo {
 .header-opt {
     font-size: 1.5rem;
     padding: 0 1rem;;
+}
+
+
+/* Banner Styles */
+
+.banner {
+    height: 20rem;
+    width: 100%;
+    background-color: #A7A7A7;
+    display: flex;
+    align-items: center;
+}
+
+.banner-strip {
+    height: 8rem;
+    width: 100%;
+    background-color: #2E4756;
+    color: #A1C2CF;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.banner-strip h2 {
+    font-size: 2.5rem;
+}
+
+.banner-strip h3 {
+    font-size: 2rem;
 }
