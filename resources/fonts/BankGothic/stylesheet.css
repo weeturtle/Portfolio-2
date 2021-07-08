@@ -1,0 +1,21 @@
+
+@font-face {
+    font-family: 'bankgothic_md_btmedium';
+    src: url('bgothm-webfont.woff2') format('woff2'),
+         url('bgothm-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'bankgothic_lt_btlight';
+    src: url('bgothl-webfont.woff2') format('woff2'),
+         url('bgothl-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

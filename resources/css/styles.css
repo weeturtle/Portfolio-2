@@ -1,0 +1,39 @@
+/* General Styles */
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:visited {
+    border:  none;
+    color: initial;
+}
+
+/* Header Styles */
+
+header {
+    height: 60px;
+    width: 100%;
+    background-color: #3C7A89;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.825rem;
+}
+
+header .logo {
+    font-family: 'Teko';
+    font-size: 2rem;
+}
+
+.header-opt-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header-opt {
+    font-size: 1.5rem;
+    padding: 0 1rem;;
+}
