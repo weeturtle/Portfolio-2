@@ -130,3 +130,15 @@ main {
     text-align: center;
     font-size: 2rem;
 }
+
+/* Project Styles */
+
+.projects {
+    width: 100%;
+    background-color: #2E4756;
+    height: 25rem;
+}
+
+.projects h2 {
+    color: #A1C2CF;
+}
