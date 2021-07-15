@@ -94,7 +94,7 @@ main {
 .about-me {
     background-color: #A1C2CF;
     width: 100%;
-    height: 20rem;
+    height: auto;
     padding: 1rem 1rem 0 1rem;
     display: flex;
     justify-content: space-between;
@@ -105,7 +105,7 @@ main {
 }
 
 #about-text-container {
-    width: 75%;
+    flex: 0 0 75%;
 }
 
 #about-me-text {
@@ -127,7 +127,9 @@ main {
 }
 
 #image img {
-    height: 85%;
+    max-height: 85%;
+    max-width: 85%;
+    margin: auto;
 }
 
 #image h3 {
@@ -236,7 +238,6 @@ main {
     padding: 0.825rem;
     background-color: #A1C2CF;
     display: flex;
-    flex-flow: row wrap;
     justify-content: space-between;
 }
 
@@ -317,4 +318,48 @@ input[type=submit] {
 
 input[type=submit]:active {
     background-color: #1c2c36;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 900px) {
+    .project:nth-child(2),
+    .project:nth-child(3) {
+        display: none;
+    }
+
+    .contact-me {
+        justify-content: center;
+    }
+
+    #contact-form {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900) {
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .about-me {
+        flex-direction: column;
+    }
+
+    #image img {
+        max-width: 25%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+/* 
+    .project-container {
+        flex-direction: column;
+    } */
+
+    .project-arrow {
+        display: none;
+    }
 }
