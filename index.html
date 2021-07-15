@@ -93,37 +93,35 @@
             <div id="my-info">
                 <h2>Contact Me</h2>
                 <h3>Interesting project idea? I'd love to hear about it!</h3>
-                <ul class="info-list">
-                    <li>
-                        <p id="contact-method">Email</p>
-                        <p id="contact-details">max@email.com</p>
-                    </li>
-                    <li>
-                        <p id="contact-method">Discord</p>
-                        <p id="contact-details">DiscordName</p>
-                    </li>
-                    <li>
-                        <p id="contact-method">GitHub</p>
-                        <p id="contact-details">GitName</p>
-                    </li>
-                </ul>
+                <table class="info-list">
+                    <tr>
+                        <td id="contact-method"><p>Email</p></td>
+                        <td id="contact-details"><p>max@email.com</p></td>
+                    </tr>
+                    <tr>
+                        <td id="contact-method"><p>Discord</p></td>
+                        <td id="contact-details"><p>DiscordName</p></td>
+                    </tr>
+                    <tr>
+                        <td id="contact-method"><p>GitHub</p></td>
+                        <td id="contact-details"><p>GitName</p></td>
+                    </tr>
+                </table>
             </div>
             <div id="contact-form">
-                <form action="">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email">
-                    <label for="subject">Subject</label>
-                    <input type="text" name="subject" id="subject">
-                    <label for="content">Content</label>
-                    <input type="text" name="content" id="content">
+                <form action=''>
+                    <label for="name" class="form-row1">Name</label>
+                    <input type="text" name="name" id="name" class="form-row1">
+                    <label for="email" class="form-row2">Email</label>
+                    <input type="text" name="email" id="email" class="form-row2">
+                    <label for="subject" class="form-row3">Subject</label>
+                    <input type="text" name="subject" id="subject" class="form-row3">
+                    <label for="content" class="form-row4">Content</label>
+                    <input type="text" name="content" id="content" class="form-row4">
+                    <input type="submit" value="Submit" class="form-row5 form-col2">
                 </form>
             </div>
         </section>
     </main>
-    <footer>
-
-    </footer>
 </body>
 </html>
