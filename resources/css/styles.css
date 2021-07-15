@@ -213,3 +213,19 @@ main {
     color: #A1C2CF;
     font-size: 1.25rem;
 }
+
+/* Skills Styles */
+
+.skills {
+    height: 5.5rem;
+    background-color: #3C7A89;
+}
+
+.skills ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
