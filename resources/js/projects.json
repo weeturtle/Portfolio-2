@@ -1,0 +1,30 @@
+[
+    {
+        "projectName": "Holly",
+        "description": "Holly is a voice controlled assistant with basic commands and the ability to control smart home devices.",
+        "language": "Python",
+        "startDate": "8/5/2019",
+        "endDate": "incomplete"
+    },
+    {
+        "projectName": "Scheduling System",
+        "description": "A simple program which processes events of different types and can remind you of events.",
+        "language": "Javascript",
+        "startDate": "24/2/21",
+        "endDate": "2/3/21"
+    },
+    {
+        "projectName": "Home Control",
+        "description": "Light control with timers and the ability to control lights automatically or with certain terms.",
+        "language": "Python",
+        "startDate": "14/5/19",
+        "endDate": "10/3/20"
+    },
+    {
+        "projectName": "IoT Lock",
+        "description": "Individual device with a keypad and keycard reader which checks database and returns values.",
+        "language": "Python",
+        "startDate": "20/11/20",
+        "endDate": "29/11/20"
+    }
+]

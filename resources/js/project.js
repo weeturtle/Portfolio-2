@@ -2,38 +2,8 @@ let projectContainer = document.getElementsByClassName('project-container')[0];
 let leftArrow = document.getElementById('left-arrow');
 let rightArrow = document.getElementById('right-arrow');
 
-let projects = [
-    {
-        projectName: "Holly",
-        description: "Holly is a voice controlled assistant with basic commands and the ability to control smart home devices.",
-        language: "Python",
-        startDate: "8/5/2019",
-        endDate: "incomplete"
-    },
-    {
-        projectName: "Scheduling System",
-        description: "A simple program which processes events of different types and can remind you of events.",
-        language: "Javascript",
-        startDate: "24/2/21",
-        endDate: "2/3/21"
-    },
-    {
-        projectName: "Home Control",
-        description: "Light control with timers and the ability to control lights automatically or with certain terms.",
-        language: "Python",
-        startDate: "14/5/19",
-        endDate: "10/3/20"
-    },
-    {
-        projectName: "IoT Lock",
-        description: "Individual device with a keypad and keycard reader which checks database and returns values.",
-        language: "Python",
-        startDate: "20/11/20",
-        endDate: "29/11/20"
-    }
-];
 
-class ProjectClass {
+class Project {
     constructor(projectIndex) {
         this._project = projects[projectIndex];
 
@@ -43,6 +13,8 @@ class ProjectClass {
         this.language = this._project.language;
         this.start = this._project.startDate;
         this.end = this._project.endDate;
+
+        this.loaded = false;
     }
 
     genHTML() {
@@ -63,34 +35,95 @@ class ProjectClass {
             <a href="#">More Info</a>
         </div>
         `;
+
         return this.html;
     }
 
     addToProjects() {
-        projectContainer.insertAdjacentHTML('beforeEnd', this.genHTML());
+        projectContainer.insertAdjacentHTML('beforeEnd', this.html);
+        this.element = document.getElementById(this.joinedName);
+        this.loaded = true;
+    }
+
+    removeProject() {
+        if (this.element) {
+            this.element.remove();
+            this.loaded = false;
+        }
     }
 }
 
-const NextProject = () => {
-    alert("Next Project");
+class ProjectManager {
+    constructor() {
+        
+    }
+
+    loadProjectJSON() {
+        fetch("../resources/js/projects.json")
+            .then(response => response.json())
+            .then(response => this.projectList = response)
+    }
+
+    nextProject() {
+
+    }
+
+    previousProject() {
+        
+    }
+
 }
 
-const PreviousProject = () => {
-    alert("Previous Project");
-}
+let pManager = new ProjectManager(projects);
+pManager.loadProjectJSON()
+
+// const NextProject = (loadedProjects, currentProjects) => {
+//     alert("Next Project");
+//     if (currentProjects[-1] === (loadedProjects.length-1)) {
+//         console.log("End of list")
+//     }
+// }
+
+// const PreviousProject = () => {
+//     alert("Previous Project");
+// }
+
+
+// // let holl = new ProjectClass(0);
+// // console.log(holl.genHTML())
+// // holl.addToProjects()
+
+// const loadAllProjects = () => {
+//     let pro = {};
+//     for (i in projects) {
+//         pro[i] = (new Project(i));
+//         pro[i].genHTML()
+//     }
+
+//     return pro;
+// }
+
+// const initProjects = (loadedProjects) => {
+//     let loaded = [];
+//     for (let i = 0; i < 3; i++) {
+//         loaded.push(loadedProjects[i]);
+//         loadedProjects[i].addToProjects();
+//         current.push(i)
+//     }
+// }
+
+// let current = []
+// const loadedProjects = loadProjects();
+// loadedProjects = initProjects(loadedProjects);
+
+
+
+
 
 leftArrow.addEventListener('click', event => {
     PreviousProject();
 })
 
 rightArrow.addEventListener('click', event => {
-    NextProject();
+    NextProject(loadedProjects, current);
 })
-
-// let holl = new ProjectClass(0);
-// console.log(holl.genHTML())
-// holl.addToProjects()
-
-const loadProjects = () => {
-    
-}
