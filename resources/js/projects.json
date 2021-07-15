@@ -26,5 +26,13 @@
         "language": "Python",
         "startDate": "20/11/20",
         "endDate": "29/11/20"
+    },
+    {
+        "projectName": "Revision Program",
+        "description": "A basic quiz program which allows the user to create quizes and answer them tracking their results",
+        "language": "Python",
+        "startDate": "11/1/19",
+        "endDate": "12/3/19"
     }
+
 ]

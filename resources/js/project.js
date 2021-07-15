@@ -4,8 +4,8 @@ let rightArrow = document.getElementById('right-arrow');
 
 
 class Project {
-    constructor(projectIndex) {
-        this._project = projects[projectIndex];
+    constructor(project) {
+        this._project = project;
 
         this.name = this._project.projectName;
         this.joinedName = this.name.replace(/\s+/g, "-").toLowerCase();
@@ -55,75 +55,87 @@ class Project {
 
 class ProjectManager {
     constructor() {
-        
+        this._projects = [];
+        this.currentLoaded = [];
     }
 
     loadProjectJSON() {
-        fetch("../resources/js/projects.json")
+        return new Promise(resolve => {
+            fetch("../resources/js/projects.json")
             .then(response => response.json())
-            .then(response => this.projectList = response)
+            .then(response => resolve(this.loadProjects(response)))
+        })
+
+    }
+
+    loadProjects(projectList) {
+        let projects = []
+        for (let e in projectList) {
+            projects.push(new Project(projectList[e]));
+            projects[e].genHTML();
+        }
+        return projects;
+    }
+    
+    async runProjects() {
+        this._projects = await this.loadProjectJSON();
+        this.showAll([0, 1, 2])
+    }
+
+    showProject(projectIndex) {
+        let initLen = this.currentLoaded.length;
+        this.currentLoaded.push(this._projects[projectIndex]);
+        this.currentLoaded[initLen].addToProjects();
+    }
+
+    hideAll() {
+        let wasLoaded = [];
+        for (let c of this.currentLoaded) {
+            wasLoaded.push(this._projects.indexOf(c));
+            c.removeProject();
+        }
+
+        this.currentLoaded = [];
+        return wasLoaded;
+    }
+
+    showAll(arr) {
+        for (let e of arr) {
+            this.showProject(e);
+        }
     }
 
     nextProject() {
-
+        let open = this.hideAll();
+        open.shift()
+        if (open[1] === this._projects.length-1) {
+            open.push(0);
+        } else {
+            open.push(open[1]+1);
+        }
+        this.showAll(open);
     }
 
     previousProject() {
-        
+        let open = this.hideAll();
+        open.pop()
+        if (open[0] === 0) {
+            open.unshift(this._projects.length-1);
+        } else {
+            open.unshift(open[0]-1);
+        }
+        this.showAll(open);
     }
-
 }
 
 let pManager = new ProjectManager(projects);
-pManager.loadProjectJSON()
-
-// const NextProject = (loadedProjects, currentProjects) => {
-//     alert("Next Project");
-//     if (currentProjects[-1] === (loadedProjects.length-1)) {
-//         console.log("End of list")
-//     }
-// }
-
-// const PreviousProject = () => {
-//     alert("Previous Project");
-// }
-
-
-// // let holl = new ProjectClass(0);
-// // console.log(holl.genHTML())
-// // holl.addToProjects()
-
-// const loadAllProjects = () => {
-//     let pro = {};
-//     for (i in projects) {
-//         pro[i] = (new Project(i));
-//         pro[i].genHTML()
-//     }
-
-//     return pro;
-// }
-
-// const initProjects = (loadedProjects) => {
-//     let loaded = [];
-//     for (let i = 0; i < 3; i++) {
-//         loaded.push(loadedProjects[i]);
-//         loadedProjects[i].addToProjects();
-//         current.push(i)
-//     }
-// }
-
-// let current = []
-// const loadedProjects = loadProjects();
-// loadedProjects = initProjects(loadedProjects);
-
-
-
+pManager.runProjects()
 
 
 leftArrow.addEventListener('click', event => {
-    PreviousProject();
+    pManager.previousProject();
 })
 
 rightArrow.addEventListener('click', event => {
-    NextProject(loadedProjects, current);
+    pManager.nextProject();
 })
